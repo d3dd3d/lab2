@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: lab2
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/calc
+    username: postgres
+    password: "Samara01"
+flyway:
+  url: jdbc:postgresql://localhost:5432/calc
+  user: postgres
+  password: "Samara01"
+  schemas: public
+  locations: db/migration
+    
