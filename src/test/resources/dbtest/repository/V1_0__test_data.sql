@@ -1,1 +1,0 @@
-INSERT INTO public.history_calculator VALUES ("8bf79530-9e20-453d-a290-e0eba057b54a","1",2,"1",2,"2024-24-10 15:35:00","+")

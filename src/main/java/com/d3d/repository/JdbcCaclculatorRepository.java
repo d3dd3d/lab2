@@ -32,7 +32,7 @@ public class JdbcCaclculatorRepository implements CalculatorRepository {
 
     @Override
     public List<CalculatorHistory> findAll(Timestamp fromDate, Timestamp toDate) throws Exception{
-        String query = String.format("SELECT * FROM history_calculator where dateHistory>=timestamp '%s' and dateHistory<=timestamp'%s'", fromDate,toDate);
+        String query = String.format("SELECT * FROM history_calculator where dateHistory>=timestamp '%s' and dateHistory<=timestamp '%s'", fromDate,toDate);
         try{
             return jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(CalculatorHistory.class));
         }
