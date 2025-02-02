@@ -1,6 +1,8 @@
 package com.d3d.controller;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,7 @@ import com.d3d.repository.JdbcCaclculatorRepository;
 
 @RestController
 @RequestMapping("/home")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HomeController {
     @Autowired
     JdbcCaclculatorRepository calcRepository;
@@ -29,6 +33,8 @@ public class HomeController {
     @GetMapping("/getList")
     public ResponseEntity<List<CalculatorHistory>> getList(@RequestParam String fromDate, @RequestParam String toDate) throws Exception{
         List<CalculatorHistory> history = new ArrayList<CalculatorHistory>();
+        fromDate+=" 00:00:00";
+        toDate+=" 00:00:00";
         try{
             calcRepository.findAll(Timestamp.valueOf(fromDate), Timestamp.valueOf(toDate)).forEach(history::add);;
         }

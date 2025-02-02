@@ -42,4 +42,8 @@ public class JdbcCaclculatorRepository implements CalculatorRepository {
         }
     }
 
+    public void execute(String sql){
+        jdbcTemplate.execute(sql);
+    }
+
 }

@@ -1,3 +1,4 @@
+package testcont;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,25 @@ import java.sql.Timestamp;
 
 
 public class TestHomeContoller extends TestIntegrationCalculator {
-
     @Autowired
-    MockMvc mockMvc;
+    protected MockMvc mockMvc;
+
+    // @MockBean
+    // JdbcCaclculatorRepository jdbcCaclculatorRepository;
+
+    // @Autowired
+    // private WebApplicationContext webApplicationContext;
+
+    // public void setUp(){
+    //     mockMvc=MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    // }
 
     @org.junit.jupiter.api.Test
     @FlywayTest
     void getList() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/home/getList")
-        .param("fromDate",new Timestamp(new Date().getTime()-1000000000).toString())
-        .param("toDate", new Timestamp(new Date().getTime()+100000000).toString()))
+        .param("fromDate","2023-11-01")
+        .param("toDate", "2025-11-01"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andReturn();
         String content = result.getResponse().getContentAsString();

@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS public.history_calculator
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.history_calculator
-    OWNER to postgres;
+-- ALTER TABLE IF EXISTS public.history_calculator
+--     OWNER to postgres;
